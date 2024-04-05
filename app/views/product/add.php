@@ -12,13 +12,13 @@ include_once 'app/views/share/header.php' ?>
 
 <form class="user" action="/QLBanXe/product/save" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <input type="text" class="form-control form-control-user"  placeholder="" name="name">
+        <input type="text" class="form-control form-control-user"  placeholder="Name" name="name">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control form-control-user" placeholder="" name="description">
+        <input type="text" class="form-control form-control-user" placeholder="Description" name="description">
     </div>
     <div class="form-group">
-        <input type="text"  class="form-control form-control-user" placeholder="" name="price">
+        <input type="text"  class="form-control form-control-user" placeholder="Price" name="price">
     </div>
     <div class="form-group">
         <input type="file" class="form-control form-control-user"  placeholder="" name="image">

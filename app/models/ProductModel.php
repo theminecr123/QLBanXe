@@ -105,7 +105,7 @@ class ProductModel
         $stmt = $this->conn->prepare($query);
 
         $id = htmlspecialchars(strip_tags($id));
-$stmt->bindParam(":id", $id);
+        $stmt->bindParam(":id", $id);
 
         if ($stmt->execute()) {
             return true;
