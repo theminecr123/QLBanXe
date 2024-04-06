@@ -10,23 +10,23 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 </head>
 <body>
-    <h1>Order Detail</h1>
+    <h1 class='order-detail'>Order Detail</h1>
     
     <!-- Display order details in DataTable -->
-    <table id="orderDetailsTable" class="display">
+    <table id="orderDetailsTable" class="display" >
         <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Quantity</th>
-                <th>Image</th>
+            <tr style="background-color:#f8f9fc;">
+                <th class="table-header-order-detail">Product ID</th>
+                <th class="table-header-order-detail">Quantity</th>
+                <th class="table-header-order-detail">Image</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($orderDetails as $detail): ?>
-                <tr>
-                    <td><?php echo $detail->productID; ?></td>
-                    <td><?php echo $detail->quantity; ?></td>
-                    <td><img src="../<?php echo $detail->image; ?>" alt="Product Image" style="width: 100px;"></td>
+                <tr style="background-color:#f8f9fc;">
+                    <td style="background-color:#f8f9fc;" class="table-header-order-detail-item" id="order-detail-item-id"><?php echo $detail->productID; ?></td>
+                    <td class="table-header-order-detail-item" id="order-detail-item-quantity"><?php echo $detail->quantity; ?></td>
+                    <td class="table-header-order-detail-item"><img src="../<?php echo $detail->image; ?>" alt="Product Image" style='width:120px; height:120px; border-radius:10px;'></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
