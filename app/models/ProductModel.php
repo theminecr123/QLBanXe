@@ -114,12 +114,5 @@ class ProductModel
         return false;
     }
     
-    public function updateQuantityInDatabase($id, $quantity) {
-        $sql = "UPDATE products SET quantity = :quantity WHERE id = :id";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':quantity', $quantity);
-        $stmt->execute();
-    }
     
 }

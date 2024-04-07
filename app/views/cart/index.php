@@ -31,10 +31,11 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         echo "<td class='table-header-item'>$item->price</td>";
         echo "<td class='table-header-item'><img src='/QLBanXe/$item->image' alt='Product Image' style='width:120px; height:120px; border-radius:10px;'></td>";
         echo "<td>
-                <form class='updateForm' data-id='$item->id'>
-                    <input class='input-quality' name='quality' type='number' value='$item->quantity' class='quantityInput'/></br>
-                    <input class='input-update' type='submit' value='Update' class='btn btn-info' />
-                </form>
+        <form class='updateForm' data-id='$item->id' method='POST'>
+            <input name='id' type='hidden' value='$item->id' /> 
+            <input name='quantity' type='number' value='$item->quantity' class='quantityInput'/>
+            <input type='submit' value='update' class='btn btn-info' />
+        </form>
             </td>";
         echo "<td>
                 <button class='button-delete' data-id='$item->id'>
@@ -110,7 +111,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         formData.append('id', id);
         formData.append('quantity', quantity);
 
-        fetch('/QLBanXe/cart/updateQuantity/', {
+        fetch('../QLBanXe/cart/updateQuantity/', {
             method: 'POST',
             body: formData
         })

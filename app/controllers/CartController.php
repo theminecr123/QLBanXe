@@ -54,10 +54,6 @@ class CartController
                 break;
             }
         }
-        
-        // Cập nhật lại dữ liệu trong cơ sở dữ liệu
-        // Đảm bảo rằng $id và $quantity là an toàn trước khi sử dụng trong truy vấn SQL
-        $this->productModel->updateQuantityInDatabase($id, $quantity);
     
         // Chuyển hướng trang về trang giỏ hàng
         header('Location: /QLBanXe/cart/show');
