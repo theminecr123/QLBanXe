@@ -103,7 +103,7 @@
         formData.append('id', id);
         formData.append('quantity', quantity);
 
-        fetch('/QLBanXe/cart/updateQuantity/', {
+        fetch('../QLBanXe/cart/updateQuantity/', {
             method: 'POST',
             body: formData
         })
