@@ -97,26 +97,8 @@
 </script>
 
 <script>
-$(document).ready(function() {
-    // Xử lý sự kiện click vào nút Xóa
-    $('.deleteButton').click(function() {
-        var productId = $(this).data('id');
-        if (confirm("Bạn có chắc muốn xóa sản phẩm này không?")) {
-            $.ajax({
-                url: '/QLBanXe/product/delete/' + productId,
-                type: 'GET',
-                success: function(response) {
-                    // Sau khi xóa thành công, làm mới trang để cập nhật danh sách sản phẩm
-                    location.reload();
-                },
-                error: function(xhr, status, error) {
-                    // Xử lý lỗi nếu có
-                    alert('Đã xảy ra lỗi khi xóa sản phẩm: ' + error);
-                }
-            });
-        }
-    });
-});
+
+
 $(document).ready(function() {
     // Xử lý sự kiện click vào nút "Thêm vào giỏ hàng"
     $('.addToCartButton').click(function() {
@@ -138,5 +120,24 @@ $(document).ready(function() {
     });
 });
 
-
+$(document).ready(function() {
+    $('.deleteButton').click(function() {
+        var productId = $(this).data('id');
+        
+        $.ajax({
+            url: '/QLBanXe/product/delete/' + productId,
+            type: 'POST',
+            success: function(response) {
+                // Xử lý phản hồi từ máy chủ nếu cần
+                alert('Đã xoá sản phẩm có ID ' + productId);
+                // Reload trang hoặc làm mới danh sách sản phẩm
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // Xử lý lỗi nếu có
+                alert('Đã xảy ra lỗi khi xoá sản phẩm: ' + error);
+            }
+        });
+    });
+});
 </script>

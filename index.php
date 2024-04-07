@@ -56,6 +56,20 @@ if ($controllerName == 'ProductController' && $action == 'add') {
     exit(); // Stop further execution
 }
 
+// Special handling for 'cart/updateQuantity'
+if ($controllerName == 'CartController' && $action == 'updateQuantity') {
+    // Check if both product ID and quantity are provided
+    if (isset($_POST['id']) && isset($_POST['quantity'])) {
+
+        $id = $_POST['id']; 
+        $quantity = $_POST['quantity'];
+        $controller->updateQuantity($id, $quantity);
+        exit(); // Stop further execution
+    } else {
+       die('Product ID or quantity is missing');
+    }
+}
+
 // Call the action method with any additional parameters
 call_user_func_array([$controller, $action], array_slice($pathParts, 2));
 ?>

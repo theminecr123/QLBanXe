@@ -13,14 +13,21 @@
     <!-- Hiển thị thông tin từ giỏ hàng -->
     <h2>Thông tin giỏ hàng</h2>
     <form action="/QLBanXe/order/createOrder" method="post">
-    <input type="hidden" name="total" value="100"> <!-- Thay 100 bằng tổng số tiền của giỏ hàng, hoặc tính toán từ session giỏ hàng -->
+    <?php
+        // Tính toán tổng giá trị từ giỏ hàng
+        $totalCartValue = 0;
+        if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $item) {
+                $totalCartValue += $item->price * $item->quantity;
+            }
+        }
+    ?>
+    <input type="hidden" name="total" value="<?php echo $totalCartValue; ?>"> <!-- Sử dụng giá trị từ giỏ hàng -->
     <input type="hidden" name="orderDetails" value="<?php echo htmlspecialchars(json_encode($_SESSION['cart'])); ?>"> <!-- Truyền thông tin giỏ hàng dưới dạng JSON -->
 
     <button type="submit">Hoàn tất đơn hàng</button>
+   
 </form>
-
-
-    
 </body>
 </html>
 <?php include_once 'app/views/share/footer.php'; ?>

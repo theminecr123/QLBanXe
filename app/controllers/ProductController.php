@@ -89,8 +89,6 @@ class ProductController
         }
     }
 
-
-
     public function edit()
 {
     if (!SessionHelper::isAdmin()) {
@@ -150,10 +148,6 @@ class ProductController
     }
 }
 
-
-
-    
-
 public function delete($id)
 {
     echo "ID sản phẩm cần xoá: " . $id;
@@ -162,12 +156,14 @@ public function delete($id)
         exit;
     }else{
         if ($this->productModel->deleteProduct($id)) {
+            echo "Xoá sản phẩm thành công!";
             //header('Location: /QLBanXe');
             header('Location: /QLBanXe/product/listProducts');
             exit;
         } else {
             // Handle error scenario
             // For example, redirect back to the product list page with an error message
+            echo "Xảy ra lỗi khi xoá sản phẩm!";
             header('Location: /QLBanXe?error=delete_failed');
             exit;
         }
