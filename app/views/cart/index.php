@@ -1,55 +1,80 @@
 <?php
-include_once 'app/views/share/header.php';
+    include_once 'app/views/share/header.php';
 
-$totalCartValue = 0;
-if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $item) {
+    $totalCartValue = 0;
+    if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+      foreach ($_SESSION['cart'] as $item) {
         $totalCartValue += $item->price * $item->quantity;
+      }
     }
-}
 
-if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    echo "Giỏ hàng trống!";
-} else {
-    echo "<h2>Danh sách giỏ hàng</h2>";
-    echo "<table id='cartTable' class='display'>";
-    echo "<thead>";
-    echo "<tr>";
-    echo "<th>ID</th>";
-    echo "<th>Name</th>";
-    echo "<th>Price</th>";
-    echo "<th>Image</th>";
-    echo "<th>Quantity</th>";
-    echo "<th>Action</th>";
-    echo "</tr>";
-    echo "</thead>";
-    echo "<tbody>";
-    foreach ($_SESSION['cart'] as $item) {
+    if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+      echo "Giỏ hàng trống!";
+    } else {
+      echo "<h2>Danh sách giỏ hàng</h2>";
+      echo "<table id='cartTable' class='display'>";
+      echo "<thead>";
+      echo "<tr>";
+      echo "<th>ID</th>";
+      echo "<th>Name</th>";
+      echo "<th>Price</th>";
+      echo "<th>Image</th>";
+      echo "<th>Quantity</th>";
+      echo "<th>Action</th>";
+      echo "</tr>";
+      echo "</thead>";
+      echo "<tbody>";
+      foreach ($_SESSION['cart'] as $item) {
         echo "<tr>";
         echo "<td>$item->id</td>";
         echo "<td>$item->name</td>";
         echo "<td>$item->price</td>";
         echo "<td><img src='/QLBanXe/$item->image' alt='Product Image' style='width:100px; height:100px;'></td>";
         echo "<td>
-                <form class='updateForm' data-id='$item->id'>
+                  <form class='updateForm' data-id='$item->id'>
                     <input name='quality' type='number' value='$item->quantity' class='quantityInput'/>
                     <input type='submit' value='update' class='btn btn-info' />
-                </form>
-            </td>";
+                  </form>
+                </td>";
         echo "<td>
-                <button class='btn btn-danger deleteButton' data-id='$item->id'>Delete</button>
-            </td>";
+                  <button class='btn btn-danger deleteButton' data-id='$item->id'>Delete</button>
+                </td>";
         echo "</tr>";
+      }
+      echo "</tbody>";
+      echo "</table>";
+
+      echo "<p>Total Cart Value: $totalCartValue</p>";
+
+      if (isset($_POST['checkout_form'])) {
+       
+        echo "<h3>Thông tin giao hàng</h3>";
+        echo "<form action='/QLBanXe/order/showCheckoutForm' method='post'>";
+        echo "<div class='form-group'>";
+        echo "<label for='name'>Họ và tên: (bắt buộc)</label>";
+        echo "<input type='text' name='name' id='name' class='form-control' required>";
+        echo "</div>";
+        echo "<div class='form-group'>";
+        echo "<label for='address'>Địa chỉ: (bắt buộc)</label>";
+        echo "<input type='text' name='address' id='address' class='form-control' required>";
+        echo "</div>";
+        echo "<div class='form-group'>";
+        echo "<label for='phone'>Số điện thoại: (bắt buộc)</label>";
+        echo "<input type='text' name='phone' id='phone' class='form-control' required>";
+        echo "</div>";
+     
+        echo "<input type='submit' value='Đặt hàng' class='btn btn-primary'>";
+       
+        echo "</form>";
+      } else {
+        echo "<form action='' method='post'>";
+        echo "<input type='hidden' name='checkout_form' value='1'>";  
+        echo "<input type='submit' value='Thanh toán'>";
+        echo "</form>";
+      }
+   
     }
-    echo "</tbody>";
-    echo "</table>";
 
-    echo "<p>Total Cart Value: $totalCartValue</p>";
-
-    echo "<form action='/QLBanXe/order/showCheckoutForm' method='post'>";
-    echo "<input type='submit' value='Checkout'>";
-    echo "</form>";
-}
 
 include_once 'app/views/share/footer.php';
 ?>
