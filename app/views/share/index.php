@@ -1,11 +1,17 @@
 <?php include_once 'app/views/share/header.php'; ?>
 <div class="container-fluid">
-    <a href="add" class="btn btn-success btn-icon-split">
-        <span class="icon text-white-50">
+    <!-- <a href="add" class="btn btn-success btn-icon-split"> -->
+        <!-- <span class="icon text-white-50">
             <i class="fas fa-check"></i>
-        </span>
-        <span class="text">Thêm sản phẩm</span>
+        </span> -->
+        <!-- <span class="text">Thêm sản phẩm</span> -->
+        <!-- <button href="add" class="btn-add-product"> Watch </button> -->
+    <!-- </a> -->
+
+    <a href="add" >
+    <button style="margin-left:-3px;" class="btn-add-product"> Thêm Sản Phẩm </button>
     </a>
+
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
@@ -22,40 +28,39 @@
                 <table class="table table-bordered" id="dataTable" width="100%" >
                 <thead>
     <tr>
-        <th>ID</th>
-        <th>NAME</th>
-        <th>DESCRIPTION</th>
-        <th>PRICE</th>
-        <th>IMAGE</th>
-        <th>Action</th>
-        <th>Add to Cart</th> <!-- Thêm cột mới -->
+        <th class='table-header-listproduct' id='listproduct-id'>ID</th>
+        <th class='table-header-listproduct' id='listproduct-name'>NAME</th>
+        <th class='table-header-listproduct' id='listproduct-id'>DESCRIPTION</th>
+        <th class='table-header-listproduct' id='listproduct-price'>PRICE</th>
+        <th class='table-header-listproduct' id='listproduct-image'>IMAGE</th>
+        <th class='table-header-listproduct' id='listproduct-id'>Action</th>
+        <th class='table-header-listproduct' id='listproduct-id'>Add to Cart</th> <!-- Thêm cột mới -->
     </tr>
 </thead>
 <tbody>
     <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
         <tr>
-            <td><?= $row['id']; ?>
-            <button class="addToCartButton btn btn-danger" data-id="<?= $row['id']; ?>">Thêm vào giỏ hàng</button> <!-- Nút thêm vào giỏ hàng -->
-
+            <td class='table-header-listproduct-item'><?= $row['id']; ?>
         </td>
-            <td><?= $row['name']; ?></td>
-            <td><?= $row['description']; ?></td>
-            <td><?= $row['price']; ?></td>
-            <td>
+            <td class='table-header-listproduct-item'><?= $row['name']; ?></td>
+            <td class='table-header-listproduct-item'><?= $row['description']; ?></td>
+            <td class='table-header-listproduct-item'><?= $row['price']; ?></td>
+            <td style="max-width:120px;">
             <?php
                             if (empty($row['image']) || !file_exists($row['image'])) {
                                 echo "No Image!";
                             } else {
-                                echo "<img src='/QLBanXe/" . $row['image'] . "' alt='' style='width:100px; height:100px;' />";
+                                echo "<img src='/QLBanXe/" . $row['image'] . "' alt='' style='width:120px; height:120px; border-radius:20px; margin-left:5px;' />";
                             }
                             ?>
             </td>
-            <td>
-                <button onclick="window.location.href='edit?id=<?= $row['id']; ?>'">Sửa</button>
+            <td style="max-width:80px;">
+                <button class="button-edit-listproduct" onclick="window.location.href='edit?id=<?= $row['id']; ?>'">Sửa</button></br>
                 <button class="deleteButton" data-id="<?= $row['id']; ?>">Xoá</button>
             </td>
-            <td>
-            </td>
+            <td style="max-width:120px;"><button style="width:180px; margin-top: 30px; margin-left:8px;" id="button-add-cart" class="addToCartButton btn btn-danger" data-id="<?= $row['id']; ?>">Thêm vào giỏ hàng</button></td> <!-- Nút thêm vào giỏ hàng -->
+            <!-- <td>
+            </td> -->
         </tr>
     <?php endwhile; ?>
 </tbody>

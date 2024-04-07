@@ -1,0 +1,714 @@
+.list-cart{
+    font-weight: bold;
+    font-size: 28px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 10px;
+}
+.table-header{
+    font-weight: bold;
+    font-size: 24px;
+    padding-left:20px;
+    padding-right: 100px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+.table-header-item{
+    font-weight: bold;
+    font-size: 22px;
+    padding-left:20px;
+    padding-right: 100px;
+    padding-top:30px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+#item-action{
+    padding-left:100px;
+}
+#total-cart{
+    font-size: 22px;
+}
+
+.button__logout {
+    font-size: 12px;
+    padding: 10px 10px;
+    border: none;
+    color: #fff;
+    border-radius: 7px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s;
+    transition-property: box-shadow;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+    position: relative;
+    top: -35px;
+    left:-500px;
+  }
+  
+  .button__logout {
+    background: rgb(0,140,255);
+    box-shadow: 0 0 25px rgb(0,140,255);
+  }
+  
+  .button__logout:hover {
+    color:black !important;
+    outline: none;
+    text-decoration: none;
+    box-shadow: 0 0 5px rgb(0,140,255),
+                0 0 25px rgb(0,140,255),
+                0 0 50px rgb(0,140,255),
+                0 0 100px rgb(0,140,255);
+  }
+
+  .input-quality {
+    max-width: 190px;
+    background-color: #008cff;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    color: white;
+    position:relative;
+    left:-30px;
+    font-weight: bold;
+  }
+  
+  .input-quality:focus {
+    animation: rotateShadow 2s infinite linear;
+  }
+  
+  @keyframes rotateShadow {
+    0% {
+      box-shadow: -5px -5px 0px 0px #aa00ff, 5px 5px 0px 0px #3700ff;
+    }
+    25% {
+      box-shadow: -5px 5px 0px 0px #aa00ff, 5px -5px 0px 0px #3700ff;
+    }
+    50% {
+      box-shadow: 5px 5px 0px 0px #aa00ff, -5px -5px 0px 0px #3700ff;
+    }
+    75% {
+      box-shadow: 5px -5px 0px 0px #aa00ff, -5px 5px 0px 0px #3700ff;
+    }
+    100% {
+      box-shadow: -5px -5px 0px 0px #aa00ff, 5px 5px 0px 0px #3700ff;
+    }
+  }
+
+
+  .input-update {
+    width: 7em;
+    position: relative;
+    height: 3em;
+    border: 3px ridge #ea7414;
+    outline: none;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+    top:20px;
+    left:10px;
+  }
+  
+  .input-update::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #212121;
+    transition: 0.5s;
+    transform-origin: center;
+  }
+  
+  .input-update::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #212121;
+    transition: 0.5s;
+  }
+  
+  .input-update:hover::before, button:hover::after {
+    transform: scale(0)
+  }
+  
+  .input-update:hover {
+    box-shadow: inset 0px 0px 25px #ea9414;
+  }
+
+  
+  .button-delete {
+    width: 160px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: red;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    background: #e62222;
+    margin-left:50px;
+   }
+   
+   .button-delete, .button-delete span {
+    transition: 200ms;
+   }
+   
+   .button-delete .text {
+    transform: translateX(35px);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left:-12px;
+   }
+   
+   .button-delete .icon {
+    position: absolute;
+    border-left: 1px solid #c41b1b;
+    transform: translateX(110px);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   
+   .button-delete svg {
+    width: 15px;
+    fill: #eee;
+   }
+   
+   .button-delete:hover {
+    background: #ff3636;
+   }
+   
+   .button-delete:hover .text {
+    color: transparent;
+   }
+   
+   .button-delete:hover .icon {
+    width: 150px;
+    border-left: none;
+    transform: translateX(0);
+   }
+   
+   .button-delete:focus {
+    outline: none;
+   }
+   
+   .button-delete:active .icon svg {
+    transform: scale(0.8);
+   }
+
+
+
+   .button-checkout {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    transition: 0.5s;
+    position: relative;
+    font-size: 17px;
+    background: #333;
+    border: none;
+    color: #fff;
+    
+  }
+  
+  .button-checkout:hover {
+    letter-spacing: 0.25em;
+    background: #ff1867;
+    color: #ff1867;
+    box-shadow: 0 0 45px #ff1867;
+  }
+  
+  .button-checkout::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #222222;
+  }
+  
+  .button-checkout span {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button-checkout i {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
+  
+  .button-checkout i::before {
+    content: '';
+    position: absolute;
+    border: 2px solid #ff1867;
+    width: 7px;
+    height: 4px;
+    top: -3.5px;
+    left: 80%;
+    background: #222222;
+    transform: translateX(-50%);
+    transition: 0.5s;
+  }
+  
+  .button-checkout:hover i::before {
+    width: 20px;
+    left: 20%;
+  }
+  
+  .button-checkout i::after {
+    content: '';
+    position: absolute;
+    border: 2px solid #ff1867;
+    width: 7px;
+    height: 4px;
+    bottom: -3.5px;
+    left: 20%;
+    background: #222222;
+    transform: translateX(-50%);
+    transition: 0.5s;
+  }
+  
+  .button-checkout:hover i::after {
+    width: 20px;
+    left: 80%;
+  }
+
+.order-history{
+    font-weight: bold;
+    font-size: 28px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    padding-bottom: 10px;
+}
+
+.table-header-order-history{
+    font-weight: bold;
+    font-size: 24px;
+    padding-right: 100px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.table-header-order-history-item{
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 100px;
+    padding-top:30px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+#order-item-id{
+    position: relative;
+    left:35px;
+}
+#order-item-total{
+    position: relative;
+    left:20px;
+}
+#order-item-date{
+    position: relative;
+    left:-10px;
+}
+
+.button-details {
+    /* padding: 0.5em 2em 0.5em 2.5em; */
+    padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 15px;
+    color: #fff6fb;
+    background-color: #212121;
+    letter-spacing: 0.3em;
+    text-shadow: -2px 2px 5px #FD3084;
+    /* background-color: transparent; */
+    border: 2px solid #FEB1DE;
+    box-shadow: 0 0 0px 1px #F11271,
+      0 0 10px 2px #FD3084,
+      inset 0 0 0px 1px #F11271,
+      inset 0 0 10px 2px #FD3084;
+    transition: 100ms;
+    position: relative;
+    left: -3px;
+  }
+  
+  .button-details:hover {
+    box-shadow: 0 0 0px 1px #F11271,
+      0 0 10px 2px #FD3084,
+      inset 0 0 0px 1px #F11271,
+      inset 0 0 30px 2px #FD3084;
+    text-shadow: 0 0 10px #FD3084;
+    transform: translateY(-5px);
+  }
+  
+  .button-details:active {
+    box-shadow: 0 0 0px 1px #F11271,
+      0 0 25px 2px #FD3084,
+      inset 0 0 0px 1px #F11271,
+      inset 0 0 30px 2px #FD3084;
+    transform: translateY(1px);
+  }
+
+  .order-detail{
+        font-weight: bold;
+        font-size: 28px;
+        font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        padding-bottom: 10px;
+  }
+
+  .table-header-order-detail{
+    font-weight: bold;
+    font-size: 24px;
+    padding-right: 100px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  .table-header-order-detail-item{
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 100px;
+    padding-top:30px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+#order-detail-item-id{
+    position: relative;
+    left:20px;
+}
+#order-detail-item-quantity{
+    position: relative;
+    left:20px;
+}
+
+span.my-custom-badge {
+    width: 150px;
+    height: 100px;
+    position: relative;
+    top:50px;
+    font-size: 28px;
+  }
+
+  .CartBtn {
+    width: 145px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(255, 208, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: .5s;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    top:10px;
+    left:-30px;
+  }
+  
+  .IconContainer {
+    position: absolute;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: .5s;
+  }
+  
+  .icon {
+    border-radius: 1px;
+  }
+  
+  .text-cart{
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(17, 17, 17);
+    z-index: 1;
+    transition-duration: .5s;
+    font-size: 1.04em;
+    font-weight: 600;
+    margin-top:14px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  .CartBtn:hover .IconContainer {
+    transform: translateX(58px);
+    border-radius: 40px;
+    transition-duration: .5s;
+  }
+  
+  .CartBtn:hover .text-cart {
+    transform: translate(10px,0px);
+    transition-duration: .5s;
+  }
+  
+  .CartBtn:active {
+    transform: scale(0.95);
+    transition-duration: .5s;
+  }
+
+  .table-header-listproduct{
+    font-weight: bold;
+    font-size: 20px;
+    width: 10px;
+    /* padding-left:20px;
+    padding-right: 100px; */
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.table-header-listproduct-item{
+        font-weight: bold;
+        font-size: 18px;
+        padding-left:20px;
+        padding-right: 100px;
+        padding-top:30px;
+        font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+#listproduct-id{
+    width: 20px;
+}
+
+#listproduct-name{
+    width: 50px;
+}
+
+/* #listproduct-price{
+    position: relative;
+    width: 30px !important;
+    color:red;
+} */
+
+#listproduct-image{
+    position: relative;
+    width: 1px !important;
+}
+
+
+#button-add-cart {
+    width: 180px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: rgb(17, 17, 17);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+  
+  #button-add-cart:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing_54134 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  #button-add-cart:active {
+    color: #000
+  }
+  
+  #button-add-cart:active:after {
+    background: transparent;
+  }
+  
+  #button-add-cart:hover:before {
+    opacity: 1;
+  }
+  
+  #button-add-cart:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing_54134 {
+    0% {
+      background-position: 0 0;
+    }
+  
+    50% {
+      background-position: 400% 0;
+    }
+  
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  .button-edit-listproduct {
+    position: relative;
+    padding: 1rem 2.5rem;
+    color: #ffd739;
+    font-size: 1em;
+    background-color: #27045b;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition-property: all;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    width: 120px;
+  }
+  
+  .button-edit-listproduct:hover {
+    background-color: #6807f9;
+    box-shadow: 0px 14px 56px -11px #6807f9;
+  }
+  
+  .button-edit-listproduct::before {
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    background-color: white;
+    border-radius: 100px;
+    right: 2rem;
+    bottom: 37%;
+    animation: 0.5s both ease-in-out infinite;
+  }
+  
+  .button-edit-listproduct:hover::before {
+    animation-name: bounce_591;
+    transition: all 0.3s ease;
+  }
+  
+  @keyframes bounce_591 {
+    0% {
+      bottom: 37%;
+    }
+  
+    50% {
+      bottom: 70%;
+    }
+  
+    100% {
+      bottom: 37%;
+    }
+  }
+
+  .deleteButton {
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(43, 0, 255);
+    border-style: solid;
+    background-color: transparent;
+    border-color: rgb(219, 218, 218);
+    width: 120px;
+    height: 40px;
+    transition: 0.2s ease;
+    text-transform: uppercase;
+    border-width: 2px;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-top:20px;
+    height: 56px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  .deleteButton:hover {
+    color: rgb(0, 255, 13);
+    background-color: rgb(202, 25, 25);
+    border-color: rgb(202, 25, 25);
+    text-shadow: 0 0 50px white, 0 0 20px white, 0 0 15px white;
+    box-shadow: 0 0 50px rgb(202, 25, 25), 0 0 30px rgb(202, 25, 25),
+      0 0 60px rgb(202, 25, 25), 0 0 120px rgb(202, 25, 25);
+    font-size: 20px;
+    width: 130px;
+    height: 50px;
+    letter-spacing: 3px;
+  }
+  .deleteButton:active {
+    width: 115px;
+    height: 38px;
+    letter-spacing: 0px;
+  }
+  
+  .btn-add-product {
+    font-size: 20px;
+    background: transparent;
+    border: none;
+    padding: 0.75em 0.3em;
+    color: red;
+    text-transform: uppercase;
+    position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  .btn-add-product::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 0px;
+    background-color: #0644ff;
+    transition: 0.5s ease;
+  }
+  
+  .btn-add-product:hover {
+    color: #0644ff;
+    transition-delay: 0.5s;
+  }
+  
+  .btn-add-product:hover::before {
+    width: 100%;
+  }
+  
+  .btn-add-product::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #ffc506;
+    transition: 0.4s ease;
+    z-index: -1;
+  }
+  
+  .btn-add-product:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+  }
+  
