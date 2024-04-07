@@ -1,5 +1,5 @@
 <?php include_once 'app/views/share/header.php'; ?>
-
+<?php unset($_SESSION['cart']);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

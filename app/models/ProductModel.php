@@ -105,7 +105,7 @@ class ProductModel
         $stmt = $this->conn->prepare($query);
 
         $id = htmlspecialchars(strip_tags($id));
-$stmt->bindParam(":id", $id);
+        $stmt->bindParam(":id", $id);
 
         if ($stmt->execute()) {
             return true;
@@ -113,4 +113,13 @@ $stmt->bindParam(":id", $id);
 
         return false;
     }
+    
+    public function updateQuantityInDatabase($id, $quantity) {
+        $sql = "UPDATE products SET quantity = :quantity WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':quantity', $quantity);
+        $stmt->execute();
+    }
+    
 }

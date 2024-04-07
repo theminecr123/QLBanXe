@@ -83,12 +83,11 @@ class ProductController
                 $errors = $result;
                 include_once 'app/views/product/add.php';
             } else {
-                header('Location: /QLBanXe  ');
+                //header('Location: /QLBanXe  ');
+                header('Location: /QLBanXe/product/listProducts');
             }
         }
     }
-
-
 
     public function edit()
 {
@@ -111,7 +110,8 @@ class ProductController
             $result = $this->productModel->updateProduct($id, $name, $description, $price, $uploadResult);
             if ($result) {
                 // Redirect to the product list page after successful update
-                header('Location: /QLBanXe');
+                //header('Location: /QLBanXe');
+                header('Location: /QLBanXe/product/listProducts');
                 exit;
             } else {
                 // Handle error scenario, if any
@@ -128,7 +128,8 @@ class ProductController
             } else {
                 // Handle the case where 'id' parameter is not provided
                 // For example, redirect to the homepage
-                header('Location: /QLBanXe');
+                //header('Location: /QLBanXe');
+                header('Location: /QLBanXe/product/listProducts');
                 exit;
             }
 
@@ -136,7 +137,8 @@ class ProductController
             $product = $this->productModel->getProductById($id);
             if (!$product) {
                 // Handle the case where product is not found
-                header('Location: /QLBanXe');
+                //header('Location: /QLBanXe');
+                header('Location: /QLBanXe/product/listProducts');
                 exit;
             }
 
@@ -146,26 +148,25 @@ class ProductController
     }
 }
 
-
-
-    
-
 public function delete($id)
 {
+    echo "ID sản phẩm cần xoá: " . $id;
     if (!SessionHelper::isAdmin()) {
         echo "Bạn không có quyền truy cập trang này";
         exit;
     }else{
         if ($this->productModel->deleteProduct($id)) {
-            header('Location: /QLBanXe');
+            echo "Xoá sản phẩm thành công!";
+            //header('Location: /QLBanXe');
+            header('Location: /QLBanXe/product/listProducts');
             exit;
         } else {
             // Handle error scenario
             // For example, redirect back to the product list page with an error message
+            echo "Xảy ra lỗi khi xoá sản phẩm!";
             header('Location: /QLBanXe?error=delete_failed');
             exit;
         }
     }
 }
-
 }
