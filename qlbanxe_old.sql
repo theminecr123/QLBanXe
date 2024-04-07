@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3301
--- Generation Time: Apr 07, 2024 at 11:30 AM
+-- Host: 127.0.0.1
+-- Generation Time: Apr 05, 2024 at 10:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,8 +40,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `name`, `email`, `password`, `role`) VALUES
-(14, 'Trần Lưu Đông Triều', 'b@gmail.com', '123456', 'admin'),
-(15, 'Huỳnh Vĩnh Tiến', 'tien@gmail.com', '123456', 'admin');
+(14, 'Trần Lưu Đông Triều', 'b@gmail.com', '123456', 'admin');
 
 -- --------------------------------------------------------
 
@@ -68,13 +67,7 @@ INSERT INTO `detailorders` (`orderID`, `productID`, `quantity`) VALUES
 (14, 12, 1),
 (15, 10, 5),
 (15, 13, 1),
-(15, 12, 1),
-(16, 10, 1),
-(17, 10, 1),
-(18, 10, 1),
-(19, 14, 1),
-(20, 14, 1),
-(21, 14, 1);
+(15, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -96,13 +89,7 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `userID`, `orderdate`, `total`) VALUES
 (13, 14, '2024-04-05', 100),
 (14, 14, '2024-04-05', 100),
-(15, 14, '2024-04-05', 100),
-(16, 15, '2024-04-06', 100),
-(17, 15, '2024-04-06', 100),
-(18, 15, '2024-04-06', 100),
-(19, 15, '2024-04-06', 100),
-(20, 15, '2024-04-06', 100),
-(21, 15, '2024-04-06', 100);
+(15, 14, '2024-04-05', 100);
 
 -- --------------------------------------------------------
 
@@ -169,13 +156,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `products`
