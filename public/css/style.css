@@ -711,4 +711,13 @@ span.my-custom-badge {
     transition-delay: 0.4s;
     color: aliceblue;
   }
-  
+  .order-success{
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 450px;
+    color: black;
+  }
+
+  .btn-primary{
+    margin-left: 520px;
+  }
