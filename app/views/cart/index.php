@@ -25,7 +25,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         echo "<tr>";
         echo "<td class='table-header-item'>$item->id</td>";
         echo "<td class='table-header-item'>$item->name</td>";
-        echo "<td class='table-header-item'>$item->price</td>";
+        echo "<td class='table-header-item'>" . number_format($item->price, 0, ',', '.') . " </td>";
         echo "<td class='table-header-item'><img src='/QLBanXe/$item->image' alt='Product Image' style='width:120px; height:120px; border-radius:10px;'></td>";
         echo "<td>
                 <input name='id' type='hidden' value='$item->id' /> 
@@ -40,7 +40,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</tbody>";
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
-    echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span><span> VND</span></p>";
+    echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
     if (isset($_POST['checkout_form'])) {
         echo "<h3>Thông tin giao hàng</h3>";
         echo "<form action='/QLBanXe/order/showCheckoutForm' method='post'>";
@@ -61,7 +61,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     } else {
         echo "<form action='' method='post'>";
         echo "<input type='hidden' name='checkout_form' value='1'>";  
-        echo "<input type='submit' value='Thanh toán'>";
+        echo "<input class='button-checkout' type='submit' value='Thanh toán'>";
         echo "</form>";
     }
 }
@@ -69,19 +69,28 @@ include_once 'app/views/share/footer.php';
 ?>
 
 <script>
-// Function to calculate and update the total price of each product
 function updateItemTotal() {
     document.querySelectorAll('.display tbody tr').forEach(row => {
-        let price = parseFloat(row.querySelector('td:nth-child(3)').textContent);
+        // Get the price text
+        let priceText = row.querySelector('td:nth-child(3)').textContent;
+
+        // Convert the price text from the formatted currency string to a float value
+        let price = parseFloat(priceText.replace(/\./g, '').replace(',', '.'));
+
+        // Get the quantity from the input
         let quantity = parseInt(row.querySelector('.quantityInput').value);
+
+        // Calculate the total for the item
         let total = price * quantity;
-        
-        // Format total as currency in VND with thousand separators
+
+        // Format the total as currency in VND
         let formattedTotal = total.toLocaleString('vi-VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
+            minimumFractionDigits: 0
         });
-        
+
+        // Set the formatted total in the appropriate table cell
         row.querySelector('.itemTotal').textContent = formattedTotal;
     });
 }
@@ -89,20 +98,33 @@ function updateItemTotal() {
 function updateTotalCartValue() {
     let total = 0;
     document.querySelectorAll('.display tbody tr').forEach(row => {
-        // Calculate each item's total, parse as float, and add to the total cart value
+        // Retrieve the formatted item total
         let totalItemText = row.querySelector('.itemTotal').textContent;
-        let totalItem = parseFloat(totalItemText.replace(/[^0-9.-]+/g, ''));
-        total += totalItem;
+        
+        // Remove the currency symbol (₫) and replace periods (thousand separators) with an empty string
+        let totalItemString = totalItemText.replace(/[^\d.,]/g, '');
+        
+        // Replace the comma (used as decimal separator in formatted input) with a period
+        totalItemString = totalItemString.replace(/\./g, '').replace(',', '.');
+        
+        // Convert the cleaned string to a floating-point number
+        let totalItemNumber = parseFloat(totalItemString);
+        
+        // Add the item total to the overall total
+        total += totalItemNumber;
     });
-    
-    // Format the total cart value as currency in VND with thousand separators
-    const formattedTotalCartValue = total.toLocaleString('vi-VN', {
-        currency: 'VND',
+
+    // Format the total cart value as currency in VND
+    let formattedTotalCartValue = total.toLocaleString('vi-VN', {
+        style: 'currency',
+        currency: 'VND'
     });
 
     // Update the total cart value on the web page
     document.getElementById('totalCartValue').textContent = formattedTotalCartValue;
 }
+
+
 
 
 function updateCartItem(id, quantity) {

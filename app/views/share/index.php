@@ -44,7 +44,7 @@
         </td>
             <td class='table-header-listproduct-item'><?= $row['name']; ?></td>
             <td class='table-header-listproduct-item'><?= $row['description']; ?></td>
-            <td class='table-header-listproduct-item'><?= $row['price']; ?></td>
+            <td class='table-header-listproduct-item'><?= number_format($row['price'],'0','.'); ?></td>
             <td style="max-width:120px;">
             <?php
                             if (empty($row['image']) || !file_exists($row['image'])) {

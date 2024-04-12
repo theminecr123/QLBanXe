@@ -25,7 +25,7 @@
             <?php foreach ($orderHistory as $order): ?>
                 <tr style="background-color:#f8f9fc;" class="orderRow" data-orderid="<?php echo $order->id; ?>">
                     <td class='table-header-order-history-item' id='order-item-id'><?php echo $order->id; ?></td>
-                    <td class='table-header-order-history-item' id='order-item-total'><?php echo $order->total; ?></td>
+                    <td class='table-header-order-history-item' id='order-item-total'><?php echo number_format($order->total,'0',','); ?></td>
                     <td class='table-header-order-history-item' id='order-item-date'><?php echo $order->orderdate; ?></td>
                     <td class="table-header-order-history-item">
                     <button class="button-details" onclick="window.open('showOrderDetail?orderid=<?php echo $order->id; ?>', '_blank')">Detail</button>

@@ -26,7 +26,9 @@
                 <tr style="background-color:#f8f9fc;">
                     <td style="background-color:#f8f9fc;" class="table-header-order-detail-item" id="order-detail-item-id"><?php echo $detail->productID; ?></td>
                     <td class="table-header-order-detail-item" id="order-detail-item-quantity"><?php echo $detail->quantity; ?></td>
-                    <td class="table-header-order-detail-item"><img src="../<?php echo $detail->image; ?>" alt="Product Image" style='width:120px; height:120px; border-radius:10px;'></td>
+                    <td class="table-header-order-detail-item"><img src="../<?php echo $detail->image; ?>" alt="Product Image" style='width:120px; height:120px; border-radius:10px;'>
+
+                </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
