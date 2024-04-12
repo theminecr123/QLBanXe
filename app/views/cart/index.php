@@ -31,7 +31,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
                 <input name='id' type='hidden' value='$item->id' /> 
                 <input name='quantity' type='number' value='$item->quantity' class='quantityInput' data-id='$item->id'/> <!-- Thêm data-id để xác định sản phẩm -->
             </td>";
-        echo "<td class='itemTotal'></td>"; // Thêm cột mới để hiển thị giá tiền của từng sản phẩm
+        echo "<td class='itemTotal'></td>"; 
         echo "<td>
                 <button class='btn btn-danger deleteButton' data-id='$item->id'>Delete</button>
             </td>";
@@ -40,7 +40,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</tbody>";
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
-    echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
+    echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span><span> VND</span></p>";
     if (isset($_POST['checkout_form'])) {
         echo "<h3>Thông tin giao hàng</h3>";
         echo "<form action='/QLBanXe/order/showCheckoutForm' method='post'>";
@@ -69,28 +69,42 @@ include_once 'app/views/share/footer.php';
 ?>
 
 <script>
-// Function để tính và cập nhật tổng tiền của mỗi sản phẩm
+// Function to calculate and update the total price of each product
 function updateItemTotal() {
     document.querySelectorAll('.display tbody tr').forEach(row => {
         let price = parseFloat(row.querySelector('td:nth-child(3)').textContent);
         let quantity = parseInt(row.querySelector('.quantityInput').value);
         let total = price * quantity;
-        row.querySelector('.itemTotal').textContent = total.toFixed(2); // Làm tròn đến 2 chữ số thập phân
+        
+        // Format total as currency in VND with thousand separators
+        let formattedTotal = total.toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        });
+        
+        row.querySelector('.itemTotal').textContent = formattedTotal;
     });
 }
 
-// Function để tính và cập nhật tổng tiền của giỏ hàng
 function updateTotalCartValue() {
     let total = 0;
     document.querySelectorAll('.display tbody tr').forEach(row => {
-        let totalItem = parseFloat(row.querySelector('.itemTotal').textContent);
+        // Calculate each item's total, parse as float, and add to the total cart value
+        let totalItemText = row.querySelector('.itemTotal').textContent;
+        let totalItem = parseFloat(totalItemText.replace(/[^0-9.-]+/g, ''));
         total += totalItem;
     });
-    // Cập nhật giá trị tổng giá trị giỏ hàng trên giao diện
-    document.getElementById('totalCartValue').textContent = total.toFixed(2); // Làm tròn đến 2 chữ số thập phân
+    
+    // Format the total cart value as currency in VND with thousand separators
+    const formattedTotalCartValue = total.toLocaleString('vi-VN', {
+        currency: 'VND',
+    });
+
+    // Update the total cart value on the web page
+    document.getElementById('totalCartValue').textContent = formattedTotalCartValue;
 }
 
-// Function để gửi yêu cầu cập nhật số lượng sản phẩm và cập nhật tổng giá trị giỏ hàng mà không cần reload trang
+
 function updateCartItem(id, quantity) {
     id = parseInt(id);
     quantity = parseInt(quantity);
