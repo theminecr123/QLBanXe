@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2024 at 10:01 AM
+-- Generation Time: Apr 12, 2024 at 04:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `name`, `email`, `password`, `role`) VALUES
-(14, 'Trần Lưu Đông Triều', 'b@gmail.com', '123456', 'admin');
+(14, 'Trần Lưu Đông Triều', 'b@gmail.com', '123456', 'admin'),
+(15, 'Trần Lưu Đông Triều', 'tranluudongtrieu@gmail.com', 'ben10123', 'admin');
 
 -- --------------------------------------------------------
 
@@ -59,15 +60,10 @@ CREATE TABLE `detailorders` (
 --
 
 INSERT INTO `detailorders` (`orderID`, `productID`, `quantity`) VALUES
-(13, 10, 5),
-(13, 13, 1),
-(13, 12, 1),
-(14, 10, 5),
-(14, 13, 1),
-(14, 12, 1),
-(15, 10, 5),
-(15, 13, 1),
-(15, 12, 1);
+(18, 17, 19),
+(18, 18, 4),
+(19, 17, 11),
+(19, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -87,9 +83,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `userID`, `orderdate`, `total`) VALUES
-(13, 14, '2024-04-05', 100),
-(14, 14, '2024-04-05', 100),
-(15, 14, '2024-04-05', 100);
+(18, 15, '2024-04-12', 270000000),
+(19, 15, '2024-04-12', 130000000);
 
 -- --------------------------------------------------------
 
@@ -110,13 +105,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES
-(10, '123', '123', 323, 'uploads/gundam.png'),
-(11, 'hj', '123', 32, 'uploads/white-owl-digital-art-hd-wallpaper-uhdpaper.com-538@0@i.jpg'),
-(12, 'test', '123', 323, ''),
-(13, 'Trần Lưu Đông Triều', '123', 3, 'uploads/gundam.png'),
-(14, '13', '123', 123, 'uploads/gundam.png'),
-(15, '13', '123', 123, 'uploads/gundam.png'),
-(16, 'hàng thứ 1', '123', 123000, 'uploads/gundam.png');
+(17, 'Mec S', 'mec', 10000000, 'uploads/Mec S.jpg'),
+(18, 'Xe BMW', 'BMW', 20000000, 'uploads/BMW.jpg'),
+(19, 'audi', 'adui', 30000000, 'uploads/audi.jpg');
 
 --
 -- Indexes for dumped tables
@@ -156,19 +147,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
